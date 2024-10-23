@@ -1,11 +1,23 @@
-import './Country.css'
-const Country = ({country}) => {
-  console.log(country)
-     const {name,flags}= country;
+import { useState } from "react";
+
+ const Country = ({country}) => {
+    const {name,flags,population,area,cca3}= country;
+
+    const [visited,setVisited]= useState(false)
+    const handleVisited = () =>{
+        setVisited(!visited);
+    }
     return (
         <div className='box'>
             <h3>Name:{name.common}</h3>
-             <img src={flags.png} alt="" /> 
+            <img src={flags.png} alt="" />
+            <p>Popilation:{population}</p>
+            <p>area:{area}</p>
+            <p>Code:{cca3}</p>
+            <button onClick={handleVisited}>{visited ? 'visited' : 'going'}</button>
+            {
+              visited ? ' I have visited this country.': 'I want to visit'  
+            }
         </div>
     );
 };

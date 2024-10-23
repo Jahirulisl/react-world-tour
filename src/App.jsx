@@ -1,6 +1,8 @@
 // import { useState } from 'react'
-// import './App.css'
+import './App.css'
 import Countries from './components/countries/countries'
+
+
 
 function App() {
   
@@ -10,9 +12,6 @@ function App() {
      
       <h1>React World Tour</h1>
       <Countries></Countries>
-    
-     
-     
     </>
   )
 }
