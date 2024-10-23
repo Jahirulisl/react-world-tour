@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import './App.css'
+// import { useState } from 'react'
+// import './App.css'
 import Countries from './components/countries/countries'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
      
-      <h1>Vite + React</h1>
+      <h1>React World Tour</h1>
       <Countries></Countries>
     
      
@@ -18,4 +18,5 @@ function App() {
 }
 
 export default App
+
 
