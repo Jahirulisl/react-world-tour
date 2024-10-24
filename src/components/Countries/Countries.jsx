@@ -7,7 +7,12 @@ import './Country.css';
 const Countries = () => {
        const [countries,setCountries] = useState([]);
 
+   // VISITED COUNTRY GULOR NAM ALADA KORA DAKABO 
        const [visitedCountries,setVisitedCountries] = useState([]);
+  // VISITED COUNTRY FLAG  ALADA KORA DAKABO TI STATE.
+       const [visitedFlags,setVisitedFlags] = useState([]);
+
+
         
        useEffect(()=>{
          fetch('https://restcountries.com/v3.1/all')
@@ -18,29 +23,52 @@ const Countries = () => {
        const handleVisitedCountry = country =>{
 
         console.log('add this to your visited country');
-        
-        console.log(country);
+        const newVisitedCountry = [...visitedCountries, country];
+        setVisitedCountries(newVisitedCountry)
+      //   console.log(country); 
        }
+ // VISITED COUNTRY FLAG  ALADA KORA DAKABO EVNT HANDLER. 
+      const handleVisitedFlags  = flag => {
+         const newVisitedFlags = [...visitedFlags, flag];
+         setVisitedFlags(newVisitedFlags);
+      }
 
 
     return (
         <div>
             <h3>Countries:{countries.length}</h3>
-             <div>
-                <h5>visited countries</h5>
-                <ul>
 
+                 {/**visited country */}
+             <div>
+                <h5>visited countries:{visitedCountries.length}</h5>
+                <ul>
+                  {
+                     visitedCountries.map(country => <li key={country.cca3}>{country.name.common}</li>)
+                  }
                 </ul>
              </div>
+               <div className="flag-container">
+                  {
+                     visitedFlags.map((flag,idx)  => <img key={idx} src={flag}></img>)
+                  }
+
+               </div>
+
+                {/**Display country */}
+
            <div className="country-container">
            {
               countries.map(country => <Country key={country.cca3}
                 
            handleVisitedCountry={handleVisitedCountry}
-                country={country}></Country>)
+        
+           handleVisitedFlags={handleVisitedFlags}
+
+           country={country}></Country>)
             } 
            </div>
         </div>
     );
 };
-export default Countries;\
+export default Countries;
+
